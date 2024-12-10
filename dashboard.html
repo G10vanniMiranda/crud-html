@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <h1>Dashboard</h1>
+    <a href="./login.html"></a>
+
+    <ul id="lista1"></ul>
+
+    <script>
+        var url = "http://localhost:3000/login"
+        var lista1 = document.querySelector("#lista1")
+
+        fetch(url)
+            .then( response => {
+                if( !response ) { throw new Error('Erro na requisição'); }
+                return response.json();
+            })
+            .then( users => {
+                users.forEach( user => {
+                    const item = document.createElement('li')
+                    item.textContent = `${user.nome} - ${user.email} - ${user.senha}`
+                    lista1.appendChild(item)
+                })
+            })
+    </script>
+</body>
+</html>

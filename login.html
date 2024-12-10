@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<body>
+
+    <form >
+
+        <h1>Seja bem vindo!</h1>
+
+        <label>E-mail</label>
+        <input id="email" type="text" placeholder="E-mail">
+
+        <label>Senha</label>
+        <input id="senha" type="text" placeholder="Senha">
+
+        <button id="btnEntrar" >Entrar</button>
+        <button id="btnCadastrar" >Cadastrar</button>
+
+    </form>
+
+    <br>
+
+    <span id="rs1"> </span>
+    <span id="rs2"> </span>
+
+    <script>
+        var email = document.querySelector("#email")
+        var senha = document.querySelector("#senha")
+        var btnEntrar = document.querySelector("#btnEntrar")
+        var btnCadastrar = document.querySelector("#btnCadastrar")
+
+        var rs1 = document.querySelector("#rs1")
+        var rs2 = document.querySelector("#rs2")
+
+        /**
+        btnEntrar.onclick = function( event ){
+            event.preventDefault()
+
+            rs1.textContent = email.value;
+            rs2.textContent = senha.value;
+
+        }
+        */
+
+        btnEntrar.onclick = function( event ){
+            event.preventDefault()
+
+            if( email.value === "" ){
+                alert("Por favor preencher o campo e-mail")
+                return false
+            }
+
+            
+            if( senha.value === "" ){
+                alert("Por favor preencher o campo senha")
+                return false
+            }
+
+            window.location.href = "dashboard.html"
+
+        }
+
+        </script>
+    
+</body>
+</html>
