@@ -6,23 +6,59 @@
     <title>Document</title>
 </head>
 <body>
-    <form>
+    <form id="user-form">
         <h1>Cadastre-se aqui!!</h1>
-        
+    
         <label>Nome</label>
         <input id="nome" type="text" placeholder="Nome">
 
         <label>Email</label>
-        <input type="text" placeholder="Email">
+        <input id="email" type="text" placeholder="Email">
         
         <label>Senha</label>
-        <input type="password" placeholder="*********">
-        
-        <label>Confirme sua Senha</label>
-        <input type="password" placeholder="*********">
+        <input id="senha" type="password" placeholder="*********">
 
-        <button>Cadastrar</button>
-        <button>Sair</button>
+        <button type="submit" >Cadastrar</button>
+        <button type="reset" >Sair</button>
     </form>
+
+    <script>
+        
+        // URL de json-serve
+        const apiUrl = 'http://localhost:3000/login';
+
+        // Seleciona o formulario e o elemento da mensagem
+        const form = document.getElementById('user-form');
+
+        // Adiciona um evento de envio ao formulário
+        form.addEventListener('submit', (event) => {
+            event.preventDefault(); //Impede o envio padrão do formulário
+
+            // Obtem os valores dos campos dp formulário
+            const nome = document.querySelector('#nome').value;
+            const email = document.querySelector('#email').value;
+            const senha = document.querySelector('#senha').value;
+
+            // Dados a serem enviados no corpo da requisição
+            const userData = {
+                nome: nome, email: email, senha: senha
+            };
+
+            // Faz a requisição POST com Fetch API
+            fetch(apiUrl, {
+                method: 'POST',
+                body: JSON.stringify(userData)
+            })
+            .then(data => {
+                // Exibe uma mensagem de sucesso
+                alert("Cadastrado com sucesso")
+
+                // Limpa o formulário
+                form.reset();
+            })
+        });
+
+    </script>
+
 </body>
 </html>

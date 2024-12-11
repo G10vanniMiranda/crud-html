@@ -7,9 +7,112 @@
 </head>
 <body>
     <h1>Dashboard</h1>
-    <a href="./login.html"></a>
+    
+    <a id="btnVoltar"    href="./login.html">Voltar</a>
+    <a id="btnCadastrar" href="./cadastro.html">+</a>
 
-    <ul id="lista1"></ul>
+    <div id="lista1"></div>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            text-decoration: none;
+            border: none;
+            outline: none;
+            box-sizing: border-box;
+        }
+        h1{
+            margin-top: 50px;
+        }
+        a{
+            color: white;
+        }
+        #btnVoltar{
+            border-radius: 10px;
+            background-color: red;
+            padding: 10px 20px;
+
+            position: absolute;
+            top: 20px;
+            right: 20px;
+
+            opacity: .9;
+            transition: .9s;
+        }
+        #btnVoltar:hover{
+            transform: scale(1.06);
+            opacity: 1;
+        }
+        #btnCadastrar{
+            position: absolute;
+            
+            bottom: 50px;
+            right: 50px;
+            color: #fff;
+            background-color: black;
+
+            font-size: 2rem;
+            height: 50px;
+            width: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: .9s;
+        }
+        #btnCadastrar:hover{
+            background-color: green;
+        }
+        body{
+
+
+            width: 100vw;
+            height: 100vh;
+
+            color: #fff;
+            background-color: #1d1d1d;
+
+            display: flex;
+            align-items: center;
+            flex-direction: column;
+
+        } 
+        p{
+            width: 280px;
+            color: #fff;
+            margin: 10px;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 10px;
+            background-color: blueviolet;
+
+            opacity: .6;
+            transition: .9s;
+        }
+        p:hover{
+            opacity: 1;
+            background-color: green;
+            transform: scale(1.1);
+        }
+
+        @media screen and ( max-width: 600px ) {
+            #lista1{
+                margin-right: 15px;
+            }
+            h1{
+                margin-top: 70px;
+                margin-bottom: 20px;
+            }
+            #btnVoltar{
+                right: 50px;
+            }
+            #btnCadastrar{
+                bottom: 70px;
+            }
+        }
+    </style>
 
     <script>
         var url = "http://localhost:3000/login"
@@ -22,7 +125,7 @@
             })
             .then( users => {
                 users.forEach( user => {
-                    const item = document.createElement('li')
+                    const item = document.createElement('p')
                     item.textContent = `${user.nome} - ${user.email} - ${user.senha}`
                     lista1.appendChild(item)
                 })
